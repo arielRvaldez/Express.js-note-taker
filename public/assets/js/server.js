@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const api = require('./js/index.js');
 const uuid = require('uuid');
+const path = require('path');
 
 const app = express();
 
