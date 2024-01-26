@@ -1,4 +1,4 @@
-const fs = require("node.fs");
+const fs = require("fs");
 var notesData = require("../db/db.json");
 
 function getNotes() {
@@ -21,7 +21,7 @@ module.exports = function(app) {
     res.json(notesData);
   });
 //post
-  app.post("api/notes", function(req, res) {
+  app.post("/api/notes", function(req, res) {
     notesData.push(req.body);
     fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
     res.json(true);
@@ -41,7 +41,7 @@ module.exports = function(app) {
     const index = notesData.indexOf(note);
 
     notesData.splice(index, 1);
-
+//updates the note
     fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
     res.json(true);
 };

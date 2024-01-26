@@ -3,6 +3,8 @@ const fs = require('node.fs');
 const api = require('./js/index.js');
 const uuid = require('uuid');
 
+const app = express();
+
 // Generate a random UUID
 const randomUuid = uuid.v4();
 
@@ -12,7 +14,7 @@ console.log('Random UUID:', randomUuid);
 const PORT = 3001;
 
 app.use(express.urlencoded({ extended: true }));
-const app = express.json();
+app.use(express.json());
 
 app.use('/api', api);
 
