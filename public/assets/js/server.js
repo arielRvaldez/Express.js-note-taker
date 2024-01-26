@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+const fs = require('node.fs');
 const api = require('./js/index.js');
 const uuid = require('uuid');
 
@@ -16,7 +16,7 @@ const app = express.json();
 
 app.use('/api', api);
 
-app.use(express.static('public'));
+app.use(express.static(__dirname,'../public/assets'));
 
 require('./routes/apiRoutes')(app);
 require('./routes/htmlRoutes')(app);
