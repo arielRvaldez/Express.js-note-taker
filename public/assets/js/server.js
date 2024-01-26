@@ -1,5 +1,5 @@
 const express = require('express');
-const fs = require('node.fs');
+const fs = require('fs');
 const api = require('./js/index.js');
 const uuid = require('uuid');
 
@@ -13,12 +13,12 @@ console.log('Random UUID:', randomUuid);
 
 const PORT = 3001;
 
+app.use(express.static(path.join(__dirname,'../public/assets')));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/api', api);
-
-app.use(express.static(__dirname,'../public/assets'));
 
 require('./routes/apiRoutes')(app);
 require('./routes/htmlRoutes')(app);
