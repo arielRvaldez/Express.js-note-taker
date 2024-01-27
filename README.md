@@ -29,7 +29,7 @@
 https://coding-boot-camp.github.io/full-stack/heroku/deploy-with-heroku-and-mysql    
 
 ## Screenshot
-![](./examples/logo-sample.jpeg)
+![](./images/note-taker.png)
 
 ## Author
 Here is my <a href="https://github.com/arielRvaldez/Express.js-note-taker.git" target="_blank">Github Repo Link</a>.
