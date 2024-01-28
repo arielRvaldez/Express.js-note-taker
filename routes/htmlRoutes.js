@@ -7,9 +7,9 @@ html.get("*", (req, res) => {
 });
 
 html.post('*', (req, res) => {
-    const {noteTitle, noteText} = req.body;
+    const {title, text} = req.body;
 
-    if (noteTitle && noteText) {
+    if (title && text) {
         const newNote = {
             title,
             text,
