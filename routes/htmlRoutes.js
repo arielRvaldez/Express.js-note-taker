@@ -9,7 +9,7 @@ html.get("*", (req, res) => {
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 });
 
-html.post('/', (req, res) => {
+html.post('*', (req, res) => {
     const {noteTitle, noteText} = req.body;
 
     if (noteTitle && noteText) {

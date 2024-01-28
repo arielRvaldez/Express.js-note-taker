@@ -15,13 +15,13 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
-if (typeof window !== 'undefined') {
-  console.log('You are on the browser');
+// if (typeof window !== 'undefined') {
+//   console.log('You are on the browser');
 
-  console.log(window.innerWidth);
-} else {
-  console.log('You are on the server');
-}
+//   console.log(window.innerWidth);
+// } else {
+//   console.log('You are on the server');
+// }
 
 // Show an element
 const show = (elem) => {
