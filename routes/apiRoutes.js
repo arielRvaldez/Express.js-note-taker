@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // const fs = require("fs");
-// const notesData = require("../db/db.json");
+const notesData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
@@ -31,10 +31,10 @@ router.post("/notes", (req, res) => {
       error_id: payload.error_id,
     });
   }
-  // notesData.push(newNote);
+  notesData.push(newNote);
 
-  // fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
-  //   res.json(true);
+  fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
+    res.json(true);
 });
 
 module.exports = router;
