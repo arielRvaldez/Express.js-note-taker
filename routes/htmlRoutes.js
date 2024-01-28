@@ -1,4 +1,5 @@
 const html = require("express").Router();
+// const path = require("path");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
@@ -15,7 +16,7 @@ html.post('*', (req, res) => {
             text,
             note_id: uuidv4(),
         };
-        readAndAppend(newNote, '.db/db.json');
+        readAndAppend(newNote, './db/db.json');
 
         const response = {
             status: 'success',
@@ -24,7 +25,12 @@ html.post('*', (req, res) => {
     
         res.json(response);
     }   else {
-        res.json('Error in posting note');
+        const response = {
+            status: 'error',
+            message: 'Title and text are required fields.',
+        };
+        //bad status code
+        res.status(400).json(response);
     }
 });
 
