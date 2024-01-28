@@ -44,7 +44,6 @@ router.post("/notes", (req, res) => {
       message: 'Object is valid, not logging. Check front end implementation',
       error_id: payload.error_id,
     });
-  }})
-})
+  }});
 
 module.exports = router;
