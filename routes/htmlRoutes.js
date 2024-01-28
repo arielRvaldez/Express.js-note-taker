@@ -5,15 +5,31 @@ const notesData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
-html.get("/", (req, res) => {
-    readFromFile('./db/feedback.json').then((data) => res.json(JSON.parse(data)))
+html.get("*", (req, res) => {
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 });
-//here//
 
 html.post('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
-    console.log("'getting' index.html");
+    const {noteTitle, noteText} = req.body;
+
+    if (noteTitle && noteText) {
+        const newNote = {
+            noteTitle,
+            noteText,
+            note_id: uuidv4(),
+        };
+        readAndAppend(newNote, '.db/db.json');
+
+        const response = {
+            status: 'success',
+            body: newNote,
+        };
+    
+        res.json(response);
+    }   else {
+        res.json('Error in posting note');
+    }
 });
 
 
-module.exports = router
+module.exports = html
