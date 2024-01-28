@@ -8,7 +8,7 @@ const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 // localhost:3001/api/notes 
 router.get("/notes", (req, res) => {
   readFromFile('./db/db.json').then((data) =>
-    res.json(JSON.parse(notesData)));
+    res.json(JSON.parse(data)));
   });
 
 router.post("/notes", (req, res) => {
@@ -31,10 +31,10 @@ router.post("/notes", (req, res) => {
       error_id: payload.error_id,
     });
   }
-  notesData.push(newNote);
+  // notesData.push(newNote);
 
-  fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
-    res.json(true);
+  // fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
+  //   res.json(true);
 });
 
 module.exports = router;
