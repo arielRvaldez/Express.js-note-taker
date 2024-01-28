@@ -7,9 +7,13 @@ const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 // localhost:3001/api/notes 
 router.get("/notes", (req, res) => {
-  readFromFile('./db/db.json').then((data) =>
-    res.json(JSON.parse(data)));
-  });
+  readFromFile('./db/db.json').then((data) => {
+    if (data.trim() === "") {
+      res.status(404).json({ error: 'No data entry found.' });
+    } else {
+    res.json(JSON.parse(data));
+  }
+});
 
 router.post("/notes", (req, res) => {
   console.log(req.body);
@@ -31,28 +35,7 @@ router.post("/notes", (req, res) => {
       message: 'Object is valid, not logging. Check front end implementation',
       error_id: payload.error_id,
     });
-  }
-  // notesData.push(payload);
-
-  // fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
-  //   res.json(true);
-});
+  }})
+})
 
 module.exports = router;
-
-//   app.delete("/notes/:id", function(req, res) {
-//         let id = req.params.id;
-//         fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
-//         res.json(true);
-
-//         let note = notesData.filter(function(note) {
-//           return note.id === req.params.id;
-//         })[0];
-    
-//         console.log(note);
-//         const index = notesData.indexOf(note);
-    
-//     //updates the note
-//         fs.writeFileSync((path.join(__dirname,'../db/db.json'), JSON.stringify(notesData)));
-//         res.json(true);
-//     });
