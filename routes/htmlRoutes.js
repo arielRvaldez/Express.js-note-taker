@@ -1,7 +1,4 @@
-// const path = require("path");
 const html = require("express").Router();
-// const fs = require("fs");
-// const notesData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
@@ -14,8 +11,8 @@ html.post('*', (req, res) => {
 
     if (noteTitle && noteText) {
         const newNote = {
-            noteTitle,
-            noteText,
+            title,
+            text,
             note_id: uuidv4(),
         };
         readAndAppend(newNote, '.db/db.json');
