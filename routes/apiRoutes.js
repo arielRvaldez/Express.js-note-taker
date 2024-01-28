@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const fs = require("fs");
-const notesData = require("../db/db.json");
+// const fs = require("fs");
+// const notesData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 
 // localhost:3001/api/notes 
 router.get("/notes", (req, res) => {
-  readFromFile('/db/db.json').then((notesData))
-    res.json(JSON.parse(notesData));
+  readFromFile('./db/db.json').then((data) =>
+    res.json(JSON.parse(notesData)));
   });
 
 router.post("/notes", (req, res) => {
@@ -23,7 +23,7 @@ router.post("/notes", (req, res) => {
   };
 
   if (!isValid) {
-    readAndAppend(payload, '/db/db.json');
+    readAndAppend(payload, './db/db.json');
     res.json('Note added');
   } else {
     res.json({
@@ -31,39 +31,14 @@ router.post("/notes", (req, res) => {
       error_id: payload.error_id,
     });
   }
-  notesData.push(newNote);
+  // notesData.push(newNote);
 
-  fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
-    res.json(true);
-})
+  // fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
+  //   res.json(true);
+});
 
-module.exports = router 
+module.exports = router;
 
-// function getNotes() {
-//   let data = fs.readFileSync(path.join(__dirname,'../db/db.json'), 'utf8');
-
-//     let notes = JSON.parse(data);
-
-//     for (let i = 0; i < notes.length; i++) {
-//       notes[i].id = "" + i;
-//     }
-
-//     return notes;
-// }
-
-    
-// //get
-//   app.get("/notes", function(req, res) {
-//     notesData = getNotes();
-//     res.json(notesData);
-//   });
-// //post
-//   app.post("/api/notes", function(req, res) {
-//     notesData.push(req.body);
-//     fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
-//     res.json(true);
-//   });
-// //delete
 //   app.delete("/notes/:id", function(req, res) {
 //         let id = req.params.id;
 //         fs.writeFileSync("../db/db.json", JSON.stringify(notesData));

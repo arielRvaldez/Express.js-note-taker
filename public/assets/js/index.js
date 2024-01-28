@@ -16,14 +16,6 @@ if (typeof window !== 'undefined' && window.location.pathname === '/notes') {
 
 }
 
-// if (typeof window !== 'undefined') {
-//   console.log('You are on the browser');
-
-//   console.log(window.innerWidth);
-// } else {
-//   console.log('You are on the server');
-// }
-
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
