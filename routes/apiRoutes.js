@@ -31,7 +31,7 @@ router.post("/notes", (req, res) => {
       error_id: payload.error_id,
     });
   }
-  // notesData.push(newNote);
+  notesData.push(payload);
 
   // fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
   //   res.json(true);
