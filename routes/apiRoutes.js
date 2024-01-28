@@ -14,7 +14,8 @@ router.get("/notes", (req, res) => {
 router.post("/notes", (req, res) => {
   console.log(req.body);
 
-  const { isValid, errors } = req.body;
+  const isValid = req.body?.isValid;
+  const errors = req.body?.errors;
 
   const payload = {
     time: Date.now(),
@@ -31,7 +32,7 @@ router.post("/notes", (req, res) => {
       error_id: payload.error_id,
     });
   }
-  notesData.push(payload);
+  // notesData.push(payload);
 
   // fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
   //   res.json(true);
