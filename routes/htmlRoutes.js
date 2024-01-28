@@ -1,7 +1,7 @@
-const path = require("path");
+// const path = require("path");
 const html = require("express").Router();
-const fs = require("fs");
-const notesData = require("../db/db.json");
+// const fs = require("fs");
+// const notesData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
@@ -31,5 +31,4 @@ html.post('/', (req, res) => {
     }
 });
 
-
-module.exports = html
+module.exports = html;
