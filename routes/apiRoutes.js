@@ -8,11 +8,12 @@ const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 // localhost:3001/api/notes 
 router.get("/notes", (req, res) => {
   readFromFile('./db/db.json').then((data) => {
-    if (data.trim() === "") {
-      res.status(404).json({ error: 'No data entry found.' });
+    if (typeof data === 'string' && data.trim() === "") {
+      // Handle the case where data is an empty string
+      res.status(404).json({ error: 'No data found.' });
     } else {
     res.json(JSON.parse(data));
-  }
+}
 });
 
 router.post("/notes", (req, res) => {
