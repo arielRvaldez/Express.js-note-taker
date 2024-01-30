@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // const fs = require("fs");
-// const notesData = require("../db/db.json");
+const data = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
