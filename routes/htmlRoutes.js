@@ -34,4 +34,4 @@ router.post('*', (req, res) => {
     }
 });
 
-module.exports = html;
+module.exports = router;
