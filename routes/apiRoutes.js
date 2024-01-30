@@ -21,8 +21,8 @@ router.post("/notes", (req, res) => {
   const payload = {
     time: Date.now(),
     error_id: uuidv4(),
-    noteTitle: req.body.noteTitle,
-    noteText: req.body.noteText,
+    text: req.body.text,
+    title: req.body.title,
     errors,
   };
 
