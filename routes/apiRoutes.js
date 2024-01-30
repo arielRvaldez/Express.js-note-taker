@@ -4,12 +4,12 @@ const notesData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
-readFromFile('./db/db.json').then((data) => {
+// readFromFile('./db/db.json').then((data) => {
 // localhost:3001/api/notes 
 router.get("/notes", (req, res) => {
-  // readFromFile('./db/db.json').then((data) => 
+  readFromFile('./db/db.json').then((data) => 
 
-    res.json(JSON.parse(data));
+    res.json(JSON.parse(data)));
 });
 
 router.post("/notes", (req, res) => {
@@ -32,6 +32,6 @@ router.post("/notes", (req, res) => {
       message: 'Object is valid, not logging. Check front end implementation',
       error_id: payload.error_id
     });
-  }})});
+  }});
 
 module.exports = router;
