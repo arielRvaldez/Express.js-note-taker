@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const path = require("path");
+const noteData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 

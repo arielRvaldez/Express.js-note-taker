@@ -1,22 +1,22 @@
 const router = require("express").Router();
 // const fs = require("fs");
-const data = require("../db/db.json");
+const noteData = require("../db/db.json");
 const { v4: uuidv4 } = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 // router.use("express".json());
 // localhost:3001/api/notes 
 router.get("/notes", (req, res) => {
-  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('./db/db.json').then((noteData) => res.json(JSON.parse(noteData)));
 });
 
 router.post("/notes", (req, res) => {
-  const {title, text} = req.body;
+  const {noteTitle, noteText} = req.body;
 
-  if (title && text) {
+  if (noteTitle && noteText) {
     const newNote = {
-        title,
-        text,
+        noteTitle,
+        noteText,
         note_id: uuidv4(),
     };
     readAndAppend(newNote, './db/db.json');
