@@ -10,7 +10,7 @@ const app = express();
 
 app.use(clog);
 
-app.use('/api', apiRoutes);
+app.use('/apiRoutes', apiRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
