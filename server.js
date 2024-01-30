@@ -11,6 +11,7 @@ const app = express();
 app.use(clog);
 
 app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
